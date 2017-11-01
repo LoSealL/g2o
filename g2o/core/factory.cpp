@@ -122,6 +122,12 @@ void Factory::registerType(const std::string& tag, AbstractHyperGraphElementCrea
 
   _creator[tag] = ci;
   _tagLookup[c->name()] = tag;
+  /**
+   * Could cause an exception in MSVC when using /MT flag.
+   * This is in /MT the heap of DLL doesn't share with the heap of EXE.
+   * In g2o::BaseBinaryEdge the allocation of STL is in EXE but delete here,
+   * which causes exception in DEBUG. (In release mode no assertion enabled)
+   */
   delete element;
 }
 

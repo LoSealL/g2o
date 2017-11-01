@@ -132,26 +132,26 @@ namespace g2o {
       };
 
 
-      typedef std::set<Edge*>                           EdgeSet;
-      typedef std::set<Vertex*>                         VertexSet;
+      typedef std::set<Edge*>                      EdgeSet;
+      typedef std::set<Vertex*>                    VertexSet;
 
       typedef std::unordered_map<int, Vertex*>     VertexIDMap;
-      typedef std::vector<Vertex*>                      VertexContainer;
+      typedef std::vector<Vertex*>                 VertexContainer;
 
       //! abstract Vertex, your types must derive from that one
       class G2O_CORE_API Vertex : public HyperGraphElement {
         public:
           //! creates a vertex having an ID specified by the argument
-          explicit Vertex(int id=InvalidId);
+          explicit Vertex(int id = InvalidId);
           virtual ~Vertex();
           //! returns the id
-          int id() const {return _id;}
-	  virtual void setId( int newId) { _id=newId; }
+          int id() const { return _id; }
+          virtual void setId(int newId) { _id = newId; }
           //! returns the set of hyper-edges that are leaving/entering in this vertex
-          const EdgeSet& edges() const {return _edges;}
+          const EdgeSet& edges() const { return _edges; }
           //! returns the set of hyper-edges that are leaving/entering in this vertex
-          EdgeSet& edges() {return _edges;}
-          virtual HyperGraphElementType elementType() const { return HGET_VERTEX;}
+          EdgeSet& edges() { return _edges; }
+          virtual HyperGraphElementType elementType() const { return HGET_VERTEX; }
         protected:
           int _id;
           EdgeSet _edges;
@@ -197,7 +197,7 @@ namespace g2o {
           void setId(int id);
           virtual HyperGraphElementType elementType() const { return HGET_EDGE;}
 
-	  int numUndefinedVertices() const;
+          int numUndefinedVertices() const;
         protected:
           VertexContainer _vertices;
           int _id; ///< unique id

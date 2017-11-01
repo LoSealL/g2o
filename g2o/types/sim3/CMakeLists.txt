@@ -1,6 +1,7 @@
 ADD_LIBRARY(types_sim3 ${G2O_LIB_TYPE}
   types_seven_dof_expmap.cpp
   types_seven_dof_expmap.h
+  g2o_types_sim3_api.h
 )
 
 SET_TARGET_PROPERTIES(types_sim3 PROPERTIES OUTPUT_NAME ${LIB_PREFIX}types_sim3)
